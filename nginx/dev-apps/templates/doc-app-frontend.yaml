@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dev-doc-app-fe
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: doc-app-fe
+    server: {{ .Values.spec.destination.server }}
+  project: doc-app
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    path: doc-app/microservices/frontend/kustomize/overlays/dev
+    targetRevision: {{ .Values.spec.source.targetRevision }}

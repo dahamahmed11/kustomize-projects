@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    notifications.argoproj.io/subscribe.on-sync-running.teams: ArgoCD
+    notifications.argoproj.io/subscribe.on-deployed.teams: ArgoCD
+    notifications.argoproj.io/subscribe.on-health-degraded: ArgoCD
+  name: doc-app-frontend
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: doc-app-frontend
+    server: {{ .Values.spec.destination.server }}
+  project: doc-app
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    path: doc-app/microservices/backend/kustomize/overlays/production
+    targetRevision: {{ .Values.spec.source.targetRevision }}

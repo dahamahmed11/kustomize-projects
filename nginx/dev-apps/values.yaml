@@ -1,0 +1,6 @@
+spec:
+  destination:
+    server: https://dev-usmpeq5k.hcp.francecentral.azmk8s.io:443
+  source:
+    repoURL: https://github.com/avaxops/kustomizes.git
+    targetRevision: HEAD
