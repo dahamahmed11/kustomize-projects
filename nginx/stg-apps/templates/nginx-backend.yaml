@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-doc-app-fe
+  name: stg-nginx
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: doc-app-fe
+    namespace: nginx
     server: {{ .Values.spec.destination.server }}
-  project: doc-app
+  project: nginx
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
-    path: doc-app/microservices/frontend/kustomize/overlays/dev
+    path: nginx/microservices/backend/kustomize/overlays/staging
     targetRevision: {{ .Values.spec.source.targetRevision }}

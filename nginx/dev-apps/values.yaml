@@ -1,6 +1,6 @@
 spec:
   destination:
-    server: https://dev-usmpeq5k.hcp.francecentral.azmk8s.io:443
+    server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/avaxops/kustomizes.git
+    repoURL: https://github.com/dahamahmed11/kustomize-projects.git
     targetRevision: HEAD
