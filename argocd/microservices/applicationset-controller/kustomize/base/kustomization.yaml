@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+  
+resources:
+    - namespace.yaml
+    - applicationset-controller-service.yaml
+    - applicationset-controller-sa.yaml
+    - applicationset-controller-rolebinding.yaml
+    - applicationset-controller-role.yaml
+    - applicationset-controller-network-policy.yaml
+    - applicationset-controller-deployment.yaml
+
+generatorOptions:
+ disableNameSuffixHash: true

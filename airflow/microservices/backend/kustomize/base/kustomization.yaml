@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+  
+resources:
+    - namespace.yaml
+    - service.yaml
+    - deployment.yaml
+    - airflow-sa.yaml
+    - cronjob.yaml
+    - pvc.yaml
+
+generatorOptions:
+ disableNameSuffixHash: true

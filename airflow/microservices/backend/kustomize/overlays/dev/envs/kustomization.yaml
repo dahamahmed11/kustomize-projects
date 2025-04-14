@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1 
+kind: Kustomization 
+
+
+configMapGenerator:
+  - envs:
+      - config.env 
+    name: airflow-config
+    namespace: airflow
+
+secretGenerator:
+ - name: airflow-dag-sync-ssh
+   envs:
+     - backend-secret.env
+   namespace: airflow
+
+
+generatorOptions:
+ disableNameSuffixHash: true

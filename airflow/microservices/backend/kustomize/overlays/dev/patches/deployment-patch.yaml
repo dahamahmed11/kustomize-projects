@@ -1,0 +1,58 @@
+- op: replace
+  path: /spec/template/spec/containers
+  value:
+    - name: airflow-webserver
+      image: "apache/airflow:2.3.0"
+      args: ["webserver"]
+      envFrom:
+        - configMapRef:
+            name: airflow-config
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - name: airflow-storage
+          mountPath: /mnt/airflow
+    - name: airflow-scheduler
+      image: "apache/airflow:2.3.0"
+      args: ["scheduler"]
+      envFrom:
+        - configMapRef:
+            name: airflow-config
+      volumeMounts:
+        - name: airflow-storage
+          mountPath: /mnt/airflow
+    - name: airflow-worker
+      image: "apache/airflow:2.3.0"
+      args: ["celery", "worker"]
+      envFrom:
+        - configMapRef:
+            name: airflow-config
+      volumeMounts:
+        - name: airflow-storage
+          mountPath: /mnt/airflow
+
+- op: add
+  path: /spec/template/spec/serviceAccountName
+  value: airflow-service-account
+
+- op: add
+  path: /spec/template/spec/volumes
+  value:
+    - name: airflow-storage
+      persistentVolumeClaim:
+        claimName: airflow-storage
+
+- op: replace
+  path: /spec/selector/matchLabels
+  value:
+    app: airflow
+
+- op: replace
+  path: /spec/template/metadata/labels
+  value:
+    app: airflow
+
+- op: replace
+  path: /metadata/labels
+  value:
+    app: airflow

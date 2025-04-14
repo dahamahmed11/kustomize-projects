@@ -1,0 +1,35 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: airflow-dag-sync
+  namespace: airflow
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: dag-sync
+              image: "alpine/git"
+              args:
+                - /bin/sh
+                - -c
+                - |
+                  mkdir -p /mnt/airflow/dags && \
+                  mkdir -p /mnt/airflow/plugins && \
+                  ssh-agent bash -c "ssh-add /etc/ssh/ssh-privatekey && git clone git@github.com:example-org/example-repo.git /mnt/airflow && \
+                  git fetch && git reset --hard origin/main"
+              volumeMounts:
+                - name: airflow-storage
+                  mountPath: /mnt/airflow
+                - name: ssh-key-volume
+                  mountPath: /etc/ssh
+          restartPolicy: OnFailure
+          volumes:
+            - name: airflow-storage
+              persistentVolumeClaim:
+                claimName: airflow-storage
+            - name: ssh-key-volume
+              secret:
+                secretName: airflow-dag-sync-ssh
