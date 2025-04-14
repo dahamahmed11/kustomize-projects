@@ -1,14 +1,12 @@
 - op: replace
   path: /spec/template/spec/containers/0/image
-  value: docker.io/python
+  value: gcr.io/google-samples/microservices-demo/paymentservice
 
 - op: add
   path: /spec/template/spec/containers/0/envFrom
   value:
     - configMapRef:
         name: env-configs
-    - secretRef:
-        name: backend-secret
 - op: add
   path: /spec/template/spec/imagePullSecrets
   value:

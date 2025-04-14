@@ -6,18 +6,8 @@ configMapGenerator:
   - envs:
       - config.env 
     name: env-configs
-    namespace: fullstack-be
+    namespace: paymentservice-be
 
-secretGenerator:
- - name: backend-secret
-   envs:
-     - backend-secret.env
-   namespace: fullstack-be
-
- - name: postgreql-secret
-   envs:
-     - secret.env
-   namespace: fullstack-be
 
 
 generatorOptions:
