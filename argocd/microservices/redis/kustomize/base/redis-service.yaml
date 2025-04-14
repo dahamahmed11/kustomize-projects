@@ -6,7 +6,6 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/component: redis
   name: argocd-redis
-  namespace: argocd-redis
 spec:
   ports:
     - name: tcp-redis

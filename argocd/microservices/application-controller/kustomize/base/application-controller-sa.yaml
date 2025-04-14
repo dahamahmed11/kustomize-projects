@@ -6,4 +6,3 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/component: repo-server
   name: argocd-application-controller
-  namespace: application-controller

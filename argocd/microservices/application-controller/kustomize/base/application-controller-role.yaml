@@ -6,7 +6,6 @@ metadata:
     app.kubernetes.io/part-of: argocd
     app.kubernetes.io/component: application-controller
   name: argocd-application-controller
-  namespace: application-controller
 rules:
 - apiGroups:
   - ""

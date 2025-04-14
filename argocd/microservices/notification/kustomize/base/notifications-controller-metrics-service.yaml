@@ -6,7 +6,6 @@ metadata:
     app.kubernetes.io/name: argocd-notifications-controller-metrics
     app.kubernetes.io/part-of: argocd
   name: argocd-notifications-controller-metrics
-  namespace: argocd-notification
 spec:
   ports:
   - name: metrics
