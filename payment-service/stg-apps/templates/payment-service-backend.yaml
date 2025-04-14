@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stg-payment-service-be
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: paymentservice-be
+    server: {{ .Values.spec.destination.server }}
+  project: payment-service-project
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    path: payment-service/microservices/backend/kustomize/overlays/dev
+    targetRevision: {{ .Values.spec.source.targetRevision }}
