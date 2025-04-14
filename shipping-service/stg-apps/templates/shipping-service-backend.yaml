@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stg-shipping-service-be
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: shipping-service-be
+    server: {{ .Values.spec.destination.server }}
+  project: shipping-service
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    path: shipping-service/microservices/backend/kustomize/overlays/dev
+    targetRevision: {{ .Values.spec.source.targetRevision }}
