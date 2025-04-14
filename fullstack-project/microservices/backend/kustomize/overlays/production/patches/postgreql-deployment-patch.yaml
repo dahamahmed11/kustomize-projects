@@ -1,0 +1,13 @@
+- op: add
+  path: /spec/template/spec/containers/0/envFrom
+  value:
+    - secretRef:
+        name: postgreql-secret
+- op: add
+  path: /spec/template/spec/imagePullSecrets
+  value:
+    - name: regcred
+
+- op: add
+  path: /spec/revisionHistoryLimit
+  value: 2
