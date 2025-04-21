@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: example
+  
+resources:
+- ../../base
+- envs
+
+patches:
+
+- path: ./patches/deployment-patch.yaml
+  target:
+    kind: Deployment
+    name: example-deploy
+    version: v1
+- path: ./patches/service-patch.yaml
+  target:
+    kind: Service
+    name: example-deploy
+    version: v1
+
+# images:
+# - name: docker.io/nginx
+#   newTag: alpine
