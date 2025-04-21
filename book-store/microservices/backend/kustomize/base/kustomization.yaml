@@ -11,3 +11,11 @@ resources:
 
 generatorOptions:
  disableNameSuffixHash: true
+
+
+secretGenerator:
+  - name: mongo-secret
+    literals:
+      - username=admin
+      - password=password123
+
