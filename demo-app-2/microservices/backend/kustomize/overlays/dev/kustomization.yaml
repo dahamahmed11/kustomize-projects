@@ -14,11 +14,7 @@ patches:
     kind: Deployment
     name: mywebapp
     version: v1
-- path: ./patches/service-patch.yaml
-  target:
-    kind: Service
-    name: mywebapp
-    version: v1
+
 
 images:
 - name: my.image.registry/nginx
