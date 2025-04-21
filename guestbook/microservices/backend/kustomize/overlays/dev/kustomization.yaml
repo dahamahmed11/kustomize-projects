@@ -14,8 +14,3 @@ patches:
     kind: Deployment
     name: guestbook
     version: v1
-- path: ./patches/service-patch.yaml
-  target:
-    kind: Service
-    name: guestbook
-    version: v1
