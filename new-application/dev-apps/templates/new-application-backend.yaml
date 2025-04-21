@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-payment-service-be
+  name: dev-new-Application-be
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: paymentservice-be
+    namespace: new-Application-be
     server: {{ .Values.spec.destination.server }}
-  project: payment-service-project
+  project: new-Application-project
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
-    path: payment-service/microservices/backend/kustomize/overlays/dev
+    path: new-application/microservices/backend/kustomize/overlays/dev
     targetRevision: {{ .Values.spec.source.targetRevision }}
