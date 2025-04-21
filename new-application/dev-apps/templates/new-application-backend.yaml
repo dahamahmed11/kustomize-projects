@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: new-Application-be
     server: {{ .Values.spec.destination.server }}
-  project: new-Application-project
+  project: new-application-project
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
     path: new-application/microservices/backend/kustomize/overlays/dev
