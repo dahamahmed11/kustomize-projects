@@ -1,0 +1,56 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: ecomerce
+  
+resources:
+- ../../base
+- envs
+
+helmCharts:
+- includeCRDs: true
+  name: mongodb
+  namespace: ecomerce
+  releaseName: mongodb
+  valuesInline:
+    architecture: standalone
+    auth:
+      enabled: true
+    containerSecurityContext:
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+    initdbScriptsConfigMap: ecomerce-init-scripts
+    persistence:
+      enabled: true
+      existingClaim: ""
+      size: 10Gi
+    podSecurityContext:
+      fsGroup: 1001
+      runAsUser: 1001
+    resources:
+      limits:
+        cpu: "1"
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 512Mi
+
+helmGlobals:
+  chartHome: charts
+
+patches:
+- path: ./patches/deployment-patch.yaml
+  target:
+    kind: Deployment
+    name: backend
+    version: v1
+- path: ./patches/service-patch.yaml
+  target:
+    kind: Service
+    name: backend
+    version: v1
+
+images:
+- name: weaveworksdemos/orders
+  newTag: 0.4.7

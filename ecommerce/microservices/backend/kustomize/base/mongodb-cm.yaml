@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ecomerce-init-scripts
+  labels:
+    app: mongodb-init
+
+data:
+  kustomize.buildOptions: "--enable-helm --helm-command=helm"
+  init.js: |
+    db = db.getSiblingDB('react_db');
+    db.createUser({
+      user: 'react_user',
+      pwd: 'react_user@123',
+      roles: [
+        { role: 'readWrite', db: 'react_db' },
+        { role: 'dbAdmin', db: 'react_db' }
+      ]
+    });
