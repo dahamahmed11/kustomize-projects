@@ -6,9 +6,7 @@ configMapGenerator:
   - envs:
       - config.env 
     name: env-configs
-    namespace: nginx
-
-
+    namespace: ecomerce-frontend
 
 generatorOptions:
  disableNameSuffixHash: true

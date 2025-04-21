@@ -28,13 +28,6 @@ helmCharts:
     podSecurityContext:
       fsGroup: 1001
       runAsUser: 1001
-    resources:
-      limits:
-        cpu: "1"
-        memory: 1Gi
-      requests:
-        cpu: 500m
-        memory: 512Mi
 
 helmGlobals:
   chartHome: charts
