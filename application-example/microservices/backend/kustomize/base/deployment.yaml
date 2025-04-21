@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: shipping-service
+  name: application-example-be
   labels:
-    app: shipping-service
+    app: application-example-be
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: shipping-service
+      app: application-example-be
   template:  
     metadata:
       labels:
-        app: shipping-service
+        app: application-example-be
     spec:
       containers:
-      - name: shipping-service
+      - name: application-example-be
         image:  < REGISTRY / IMAGE >
         ports:
           - containerPort: 50051

@@ -7,10 +7,6 @@
   value:
     - configMapRef:
         name: env-configs
-- op: add
-  path: /spec/template/spec/imagePullSecrets
-  value:
-    - name: regcred
 
 - op: add
   path: /spec/revisionHistoryLimit

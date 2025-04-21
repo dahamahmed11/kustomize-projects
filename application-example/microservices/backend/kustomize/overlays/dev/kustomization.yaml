@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: shipping-service-be
+namespace: application-example-be
   
 resources:
 - ../../base
@@ -12,13 +12,9 @@ patches:
 - path: ./patches/deployment-patch.yaml
   target:
     kind: Deployment
-    name: shipping-service
+    name: application-example-be
     version: v1
-- path: ./patches/service-patch.yaml
-  target:
-    kind: Service
-    name: shipping-service
-    version: v1
+
 
 images:
 - name: gcr.io/google-samples/microservices-demo/shippingservice
