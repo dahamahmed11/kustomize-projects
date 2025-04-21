@@ -14,11 +14,7 @@ patches:
     kind: Deployment
     name: nginx
     version: v1
-- path: ./patches/service-patch.yaml
-  target:
-    kind: Service
-    name: nginx
-    version: v1
+
 
 images:
 - name: docker.io/nginx
