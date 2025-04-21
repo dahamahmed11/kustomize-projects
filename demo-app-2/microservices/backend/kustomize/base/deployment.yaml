@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebapp
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mywebapp
+  template:
+    metadata:
+      labels:
+        app: mywebapp
+    spec:
+      containers:
+      - name: mycontainer
+        image: "devopsjourney1/mywebapp:latest"
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: mykustom-map
+        resources:
+          requests:
+            memory: "16Mi" 
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"

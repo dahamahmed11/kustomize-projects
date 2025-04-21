@@ -1,0 +1,9 @@
+- op: add
+  path: /spec/template/spec/containers/0/envFrom
+  value:
+    - configMapRef:
+        name: env-configs
+
+- op: add
+  path: /spec/revisionHistoryLimit
+  value: 2
