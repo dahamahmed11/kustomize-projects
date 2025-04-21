@@ -14,11 +14,6 @@ patches:
     kind: Deployment
     name: frontend
     version: v1
-- path: ./patches/service-patch.yaml
-  target:
-    kind: Service
-    name: frontend
-    version: v1
 
 images:
 - name: gcr.io/google-samples/microservices-demo/frontend
