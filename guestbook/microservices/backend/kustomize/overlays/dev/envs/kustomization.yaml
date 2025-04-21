@@ -9,5 +9,6 @@ configMapGenerator:
     namespace: nginx
 
 
+
 generatorOptions:
  disableNameSuffixHash: true
