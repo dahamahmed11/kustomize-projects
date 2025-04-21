@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-grafana
+  name: dev-cert-manager
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: grafana
+    namespace: cert-manager
     server: {{ .Values.spec.destination.server }}
-  project: grafana
+  project: cert-manager
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
-    path: grafana/microservices/backend/kustomize/overlays/dev
+    path: cert-manager/microservices/backend/kustomize/overlays/dev
     targetRevision: {{ .Values.spec.source.targetRevision }}
