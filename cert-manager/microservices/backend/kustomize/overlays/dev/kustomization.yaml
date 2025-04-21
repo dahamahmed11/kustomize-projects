@@ -7,13 +7,13 @@ resources:
 - ../../base
 - envs
 
-patches:
+# patches:
 
-- path: ./patches/deployment-patch.yaml
-  target:
-    kind: Deployment
-    name: cert-manager
-    version: v1
+# - path: ./patches/deployment-patch.yaml
+#   target:
+#     kind: Deployment
+#     name: cert-manager
+#     version: v1
 
 # images:
 # - name: grafana/grafana
