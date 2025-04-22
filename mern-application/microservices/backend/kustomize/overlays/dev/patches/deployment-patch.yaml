@@ -1,0 +1,15 @@
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: ismail55/backend
+
+- op: add
+  path: /spec/template/spec/containers/0/envFrom
+  value:
+    - configMapRef:
+        name: mongodb-config
+    - secretRef:
+        name: mongo-secrets
+
+- op: add
+  path: /spec/revisionHistoryLimit
+  value: 2
