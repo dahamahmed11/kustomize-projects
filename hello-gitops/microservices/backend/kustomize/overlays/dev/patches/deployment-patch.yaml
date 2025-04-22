@@ -1,0 +1,13 @@
+- op: replace
+  path: /spec/template/spec/containers/0/image
+  value: mansong/hello-gitops
+
+- op: add
+  path: /spec/template/spec/containers/0/envFrom
+  value:
+    - configMapRef:
+        name: env-configs
+
+- op: add
+  path: /spec/revisionHistoryLimit
+  value: 2

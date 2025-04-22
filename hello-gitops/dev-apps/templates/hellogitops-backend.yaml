@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dev-hello-gitops
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: hello-gitops
+    server: {{ .Values.spec.destination.server }}
+  project: hello-gitops
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    path: hello-gitops/microservices/backend/kustomize/overlays/dev
+    targetRevision: {{ .Values.spec.source.targetRevision }}
