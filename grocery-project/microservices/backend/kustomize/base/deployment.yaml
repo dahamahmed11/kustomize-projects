@@ -14,6 +14,14 @@ spec:
     spec:
       containers:
       - name: grocery-be
-        image: your-image:tag
+        image: ghcr.io/nico-iaco/grocery-be
         ports:
         - containerPort: 80
+        env:
+            - name: TZ
+              value: Europe/Rome
+        envFrom:
+            -   configMapRef:
+                    name: grocery-be-properties
+            -   secretRef:
+                    name: grocery-be-secrets
