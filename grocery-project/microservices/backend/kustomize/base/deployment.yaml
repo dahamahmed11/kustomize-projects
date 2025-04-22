@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grocery-be-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grocery-be-deployment
+  template:
+    metadata:
+      labels:
+        app: grocery-be-deployment
+    spec:
+      containers:
+      - name: grocery-be
+        image: your-image:tag
+        ports:
+        - containerPort: 80

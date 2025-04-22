@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: grocery-be-deployment
+  
+resources:
+- ../../base
+- envs
+
+patches:
+
+- path: ./patches/deployment-patch.yaml
+  target:
+    kind: Deployment
+    name: grocery-be-deployment
+    version: v1
+
+
+# images:
+# - name: docker.io/grocery-be-deployment
+#   newTag: alpine
