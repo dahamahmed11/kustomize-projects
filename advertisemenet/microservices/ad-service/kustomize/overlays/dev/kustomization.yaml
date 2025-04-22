@@ -14,11 +14,7 @@ patches:
     kind: Deployment
     name: adservice
     version: v1
-- path: ./patches/service-patch.yaml
-  target:
-    kind: Service
-    name: adservice
-    version: v1
+
 
 images:
 - name: gcr.io/google-samples/microservices-demo/adservice
