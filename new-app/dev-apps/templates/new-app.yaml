@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dev-result
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: result
+    server: {{ .Values.spec.destination.server }}
+  project: result
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    path: new-app/microservices/backend/kustomize/overlays/dev
+    targetRevision: {{ .Values.spec.source.targetRevision }}
